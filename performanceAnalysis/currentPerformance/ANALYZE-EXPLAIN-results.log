@@ -1,0 +1,15 @@
+EXPLAIN
+"-> Sort: o.order_purchase_timestamp DESC  (actual time=1137..1137 rows=16 loops=1)
+    -> Stream results  (cost=3.58e+15 rows=3.58e+15) (actual time=1074..1136 rows=16 loops=1)
+        -> Inner hash join (p.product_id = oi.product_id)  (cost=3.58e+15 rows=3.58e+15) (actual time=1074..1136 rows=16 loops=1)
+            -> Table scan on p  (cost=0.306 rows=32771) (actual time=0.0964..48.8 rows=32951 loops=1)
+            -> Hash
+                -> Inner hash join (oi.order_id = o.order_id)  (cost=1.09e+12 rows=1.09e+12) (actual time=826..1073 rows=16 loops=1)
+                    -> Table scan on oi  (cost=1.08 rows=111720) (actual time=0.305..221 rows=112650 loops=1)
+                    -> Hash
+                        -> Inner hash join (o.customer_id = c.customer_id)  (cost=97.8e+6 rows=97.7e+6) (actual time=522..804 rows=17 loops=1)
+                            -> Table scan on o  (cost=0.428 rows=98828) (actual time=0.831..254 rows=99441 loops=1)
+                            -> Hash
+                                -> Filter: (c.customer_unique_id = '8d50f5eadf50201ccdcedfb9e2ac8455')  (cost=10075 rows=9891) (actual time=59.5..506 rows=17 loops=1)
+                                    -> Table scan on c  (cost=10075 rows=98906) (actual time=4.18..479 rows=99441 loops=1)
+"

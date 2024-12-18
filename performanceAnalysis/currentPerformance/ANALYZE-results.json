@@ -1,0 +1,106 @@
+{
+  "EXPLAIN": {
+    "query_block": {
+      "select_id": 1,
+      "cost_info": {
+        "query_cost": "7.1587928681542e+15"
+      },
+      "ordering_operation": {
+        "using_temporary_table": true,
+        "using_filesort": true,
+        "cost_info": {
+          "sort_cost": "3.5786835067133e+15"
+        },
+        "nested_loop": [
+          {
+            "table": {
+              "table_name": "c",
+              "access_type": "ALL",
+              "rows_examined_per_scan": 98906,
+              "rows_produced_per_join": 9890,
+              "filtered": "10.00",
+              "cost_info": {
+                "read_cost": "9085.79",
+                "eval_cost": "989.06",
+                "prefix_cost": "10074.85",
+                "data_read_per_join": "14M"
+              },
+              "used_columns": [
+                "customer_id",
+                "customer_unique_id"
+              ],
+              "attached_condition": "(`brazilian_ecommerce_test_db`.`c`.`customer_unique_id` = '8d50f5eadf50201ccdcedfb9e2ac8455')"
+            }
+          },
+          {
+            "table": {
+              "table_name": "o",
+              "access_type": "ALL",
+              "rows_examined_per_scan": 98828,
+              "rows_produced_per_join": 97746824,
+              "filtered": "10.00",
+              "using_join_buffer": "hash join",
+              "cost_info": {
+                "read_cost": "3245.06",
+                "eval_cost": "9774682.46",
+                "prefix_cost": "97760143.05",
+                "data_read_per_join": "57G"
+              },
+              "used_columns": [
+                "order_id",
+                "customer_id",
+                "order_status",
+                "order_purchase_timestamp"
+              ],
+              "attached_condition": "(`brazilian_ecommerce_test_db`.`o`.`customer_id` = `brazilian_ecommerce_test_db`.`c`.`customer_id`)"
+            }
+          },
+          {
+            "table": {
+              "table_name": "oi",
+              "access_type": "ALL",
+              "rows_examined_per_scan": 111720,
+              "rows_produced_per_join": 1092027540626,
+              "filtered": "10.00",
+              "using_join_buffer": "hash join",
+              "cost_info": {
+                "read_cost": "105836338.93",
+                "eval_cost": "109202754062.64",
+                "prefix_cost": "1092231120835.89",
+                "data_read_per_join": "619T"
+              },
+              "used_columns": [
+                "order_id",
+                "product_id",
+                "price",
+                "freight_value"
+              ],
+              "attached_condition": "(`brazilian_ecommerce_test_db`.`oi`.`order_id` = `brazilian_ecommerce_test_db`.`o`.`order_id`)"
+            }
+          },
+          {
+            "table": {
+              "table_name": "p",
+              "access_type": "ALL",
+              "rows_examined_per_scan": 32771,
+              "rows_produced_per_join": 3578683506713294,
+              "filtered": "10.00",
+              "using_join_buffer": "hash join",
+              "cost_info": {
+                "read_cost": "333676933360.75",
+                "eval_cost": "3.5786835067133e+14",
+                "prefix_cost": "3.580109361441e+15",
+                "data_read_per_join": "1E"
+              },
+              "used_columns": [
+                "product_id",
+                "product_category_name"
+              ],
+              "attached_condition": "(`brazilian_ecommerce_test_db`.`p`.`product_id` = `brazilian_ecommerce_test_db`.`oi`.`product_id`)"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
