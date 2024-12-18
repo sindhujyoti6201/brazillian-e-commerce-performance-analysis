@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>edu.nyu</groupId>
-    <artifactId>brazillian-e-commerce</artifactId>
+    <artifactId>brazillian-e-commerce-performance-analysis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>brazillian-e-commerce</name>
-    <description>brazillian-e-commerce</description>
+    <name>brazillian-e-commerce-performance-analysis</name>
+    <description>brazillian-e-commerce-performance-analysis</description>
     <url/>
     <licenses>
         <license/>

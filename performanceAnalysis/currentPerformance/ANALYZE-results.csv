@@ -1,0 +1,5 @@
+id,select_type,table,partitions,type,possible_keys,key,key_len,ref,rows,filtered,Extra
+1,SIMPLE,c,NULL,ALL,NULL,NULL,NULL,NULL,98906,10.00,"Using where; Using temporary; Using filesort"
+1,SIMPLE,o,NULL,ALL,NULL,NULL,NULL,NULL,98828,10.00,"Using where; Using join buffer (hash join)"
+1,SIMPLE,oi,NULL,ALL,NULL,NULL,NULL,NULL,111720,10.00,"Using where; Using join buffer (hash join)"
+1,SIMPLE,p,NULL,ALL,NULL,NULL,NULL,NULL,32771,10.00,"Using where; Using join buffer (hash join)"

@@ -1,0 +1,17 @@
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_customers_dataset.csv olist_customers_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_sellers_dataset.csv olist_sellers_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_geolocation_dataset.csv olist_geolocation_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_orders_dataset.csv olist_orders_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/product_category_name_translation.csv product_category_name_translation
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_products_dataset.csv olist_products_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_order_items_dataset.csv olist_order_items_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_order_payments_dataset.csv olist_order_payments_dataset
+
+java -jar target/brazillian-e-commerce-0.0.1-SNAPSHOT.jar datasets/olist_order_reviews_dataset.csv olist_order_reviews_dataset
