@@ -1,0 +1,14 @@
+EXPLAIN
+"-> Sort: o.order_purchase_timestamp DESC  (actual time=401..401 rows=16 loops=1)
+    -> Stream results  (cost=21480 rows=11492) (actual time=37..400 rows=16 loops=1)
+        -> Nested loop inner join  (cost=21480 rows=11492) (actual time=36.7..399 rows=16 loops=1)
+            -> Nested loop inner join  (cost=17457 rows=11202) (actual time=32.4..378 rows=16 loops=1)
+                -> Nested loop inner join  (cost=13537 rows=9891) (actual time=29.6..350 rows=17 loops=1)
+                    -> Filter: ((c.customer_unique_id = '8d50f5eadf50201ccdcedfb9e2ac8455') and (c.customer_id is not null))  (cost=10075 rows=9891) (actual time=26.5..319 rows=17 loops=1)
+                        -> Table scan on c  (cost=10075 rows=98906) (actual time=6.94..277 rows=99441 loops=1)
+                    -> Filter: (o.order_id is not null)  (cost=0.25 rows=1) (actual time=1.79..1.83 rows=1 loops=17)
+                        -> Index lookup on o using idx_orders_customer_id (customer_id=c.customer_id)  (cost=0.25 rows=1) (actual time=1.79..1.83 rows=1 loops=17)
+                -> Filter: (oi.product_id is not null)  (cost=0.283 rows=1.13) (actual time=1.64..1.67 rows=0.941 loops=17)
+                    -> Index lookup on oi using idx_order_items_order_id (order_id=o.order_id)  (cost=0.283 rows=1.13) (actual time=1.64..1.67 rows=0.941 loops=17)
+            -> Index lookup on p using idx_products_product_id (product_id=oi.product_id)  (cost=0.256 rows=1.03) (actual time=1.28..1.29 rows=1 loops=16)
+"
