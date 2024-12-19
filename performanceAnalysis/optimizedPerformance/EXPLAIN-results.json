@@ -1,0 +1,140 @@
+{
+  "EXPLAIN": {
+    "query_block": {
+      "select_id": 1,
+      "cost_info": {
+        "query_cost": "32971.40"
+      },
+      "ordering_operation": {
+        "using_temporary_table": true,
+        "using_filesort": true,
+        "cost_info": {
+          "sort_cost": "11491.90"
+        },
+        "nested_loop": [
+          {
+            "table": {
+              "table_name": "c",
+              "access_type": "ALL",
+              "possible_keys": [
+                "idx_customers_customer_id"
+              ],
+              "rows_examined_per_scan": 98906,
+              "rows_produced_per_join": 9890,
+              "filtered": "10.00",
+              "cost_info": {
+                "read_cost": "9085.79",
+                "eval_cost": "989.06",
+                "prefix_cost": "10074.85",
+                "data_read_per_join": "14M"
+              },
+              "used_columns": [
+                "customer_id",
+                "customer_unique_id"
+              ],
+              "attached_condition": "((`brazilian_ecommerce_test_db`.`c`.`customer_unique_id` = '8d50f5eadf50201ccdcedfb9e2ac8455') and (`brazilian_ecommerce_test_db`.`c`.`customer_id` is not null))"
+            }
+          },
+          {
+            "table": {
+              "table_name": "o",
+              "access_type": "ref",
+              "possible_keys": [
+                "idx_orders_order_id",
+                "idx_orders_customer_id"
+              ],
+              "key": "idx_orders_customer_id",
+              "used_key_parts": [
+                "customer_id"
+              ],
+              "key_length": "203",
+              "ref": [
+                "brazilian_ecommerce_test_db.c.customer_id"
+              ],
+              "rows_examined_per_scan": 1,
+              "rows_produced_per_join": 9890,
+              "filtered": "100.00",
+              "cost_info": {
+                "read_cost": "2472.65",
+                "eval_cost": "989.06",
+                "prefix_cost": "13536.56",
+                "data_read_per_join": "5M"
+              },
+              "used_columns": [
+                "order_id",
+                "customer_id",
+                "order_status",
+                "order_purchase_timestamp"
+              ],
+              "attached_condition": "(`brazilian_ecommerce_test_db`.`o`.`order_id` is not null)"
+            }
+          },
+          {
+            "table": {
+              "table_name": "oi",
+              "access_type": "ref",
+              "possible_keys": [
+                "idx_order_items_order_id",
+                "idx_order_items_product_id"
+              ],
+              "key": "idx_order_items_order_id",
+              "used_key_parts": [
+                "order_id"
+              ],
+              "key_length": "203",
+              "ref": [
+                "brazilian_ecommerce_test_db.o.order_id"
+              ],
+              "rows_examined_per_scan": 1,
+              "rows_produced_per_join": 11202,
+              "filtered": "100.00",
+              "cost_info": {
+                "read_cost": "2800.56",
+                "eval_cost": "1120.22",
+                "prefix_cost": "17457.34",
+                "data_read_per_join": "6M"
+              },
+              "used_columns": [
+                "order_id",
+                "product_id",
+                "price",
+                "freight_value"
+              ],
+              "attached_condition": "(`brazilian_ecommerce_test_db`.`oi`.`product_id` is not null)"
+            }
+          },
+          {
+            "table": {
+              "table_name": "p",
+              "access_type": "ref",
+              "possible_keys": [
+                "idx_products_product_id"
+              ],
+              "key": "idx_products_product_id",
+              "used_key_parts": [
+                "product_id"
+              ],
+              "key_length": "203",
+              "ref": [
+                "brazilian_ecommerce_test_db.oi.product_id"
+              ],
+              "rows_examined_per_scan": 1,
+              "rows_produced_per_join": 11491,
+              "filtered": "100.00",
+              "cost_info": {
+                "read_cost": "2872.97",
+                "eval_cost": "1149.19",
+                "prefix_cost": "21479.51",
+                "data_read_per_join": "7M"
+              },
+              "used_columns": [
+                "product_id",
+                "product_category_name"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
